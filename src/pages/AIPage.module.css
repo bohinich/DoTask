@@ -1,0 +1,215 @@
+.aiPage {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 22px 26px;
+    overflow: hidden;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
+    flex-shrink: 0;
+}
+
+.titleSection {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.iconWrapper {
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    background: rgba(254, 85, 22, 0.14);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 24px;
+    letter-spacing: 1px;
+}
+
+.subtitle {
+    font-size: 12px;
+    color: rgba(232, 217, 187, 0.55);
+}
+
+.status {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.statusDot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #00c878;
+    animation: pulse 1.5s infinite;
+}
+
+.statusText {
+    font-size: 12px;
+    color: #00c878;
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+}
+
+.messagesContainer {
+    flex: 1;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding-right: 8px;
+}
+
+.messageRow {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+}
+
+.userRow {
+    justify-content: flex-end;
+}
+
+.assistantRow {
+    justify-content: flex-start;
+}
+
+.assistantAvatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 9px;
+    background: rgba(254, 85, 22, 0.14);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.messageBubble {
+    max-width: 70%;
+    padding: 11px 15px;
+    border-radius: 14px;
+    font-size: 13.5px;
+    line-height: 1.55;
+}
+
+.userBubble {
+    background: #fe5516;
+    color: #fff;
+    box-shadow: 0 4px 14px rgba(254, 85, 22, 0.38);
+    border-radius: 14px 14px 4px 14px;
+}
+
+.assistantBubble {
+    background: #243340;
+    color: #e8d9bb;
+    border: 1px solid rgba(232, 217, 187, 0.07);
+    border-radius: 14px 14px 14px 4px;
+}
+
+.loadingBubble {
+    padding: 13px 16px;
+    border-radius: 14px 14px 14px 4px;
+    background: #243340;
+    border: 1px solid rgba(232, 217, 187, 0.07);
+    display: flex;
+    gap: 6px;
+}
+
+.loadingDot {
+    animation: blink 1.4s infinite;
+    font-size: 12px;
+    color: #fe5516;
+}
+
+.loadingDot:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.loadingDot:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes blink {
+
+    0%,
+    100% {
+        opacity: 0.2;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+.suggestions {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 16px;
+    flex-shrink: 0;
+}
+
+.suggestionBtn {
+    padding: 7px 13px;
+    border-radius: 8px;
+    font-size: 12px;
+    cursor: pointer;
+    background: rgba(254, 85, 22, 0.1);
+    color: #fe5516;
+    border: 1px solid rgba(254, 85, 22, 0.2);
+    transition: all 0.2s;
+}
+
+.suggestionBtn:hover {
+    background: rgba(254, 85, 22, 0.2);
+}
+
+.inputSection {
+    display: flex;
+    gap: 10px;
+    margin-top: 16px;
+    flex-shrink: 0;
+}
+
+.inputWrapper {
+    flex: 1;
+    position: relative;
+}
+
+.input {
+    width: 100%;
+    background: #0e1a20;
+    border: 1px solid rgba(232, 217, 187, 0.13);
+    border-radius: 10px;
+    padding: 11px 16px;
+    color: #e8d9bb;
+    font-size: 13px;
+    outline: none;
+}
+
+.input:focus {
+    border-color: #fe5516;
+    box-shadow: 0 0 0 3px rgba(254, 85, 22, 0.14);
+}

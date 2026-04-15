@@ -1,0 +1,208 @@
+.tasksPage {
+    flex: 1;
+    overflow-y: auto;
+    padding: 22px 26px;
+    display: flex;
+    flex-direction: column;
+}
+
+.toolbar {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.pageTitle {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 26px;
+    letter-spacing: 1px;
+}
+
+.filterGroup {
+    display: flex;
+    gap: 4px;
+    background: rgba(28, 43, 53, 0.5);
+    padding: 3px;
+    border-radius: 10px;
+}
+
+.filterBtn {
+    padding: 6px 13px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.15s;
+    background: transparent;
+    color: rgba(232, 217, 187, 0.55);
+    border: none;
+}
+
+.filterBtn.active {
+    background: rgba(254, 85, 22, 0.14);
+    color: #fe5516;
+    border: 1px solid rgba(254, 85, 22, 0.28);
+}
+
+.rightToolbar {
+    display: flex;
+    gap: 6px;
+    margin-left: auto;
+}
+
+.listView {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.listItem {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.listItemContent {
+    flex: 1;
+}
+
+.listItemName {
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 2px;
+}
+
+.listItemDesc {
+    font-size: 11.5px;
+    color: rgba(232, 217, 187, 0.55);
+}
+
+.listItemActions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.listItemDue {
+    font-size: 11px;
+    color: rgba(232, 217, 187, 0.55);
+    min-width: 70px;
+}
+
+.emptyState {
+    text-align: center;
+    padding: 40px 0;
+    color: rgba(232, 217, 187, 0.55);
+    font-size: 13px;
+}
+
+.boardView {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    align-items: start;
+}
+
+.boardColumn {
+    display: flex;
+    flex-direction: column;
+}
+
+.boardHeader {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.boardTitle {
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.boardCount {
+    background: rgba(254, 85, 22, 0.14);
+    color: #fe5516;
+    padding: 2px 7px;
+    border-radius: 10px;
+    font-size: 11px;
+}
+
+.boardCards {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.boardCardTop {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 5px;
+}
+
+.boardCardName {
+    font-size: 13px;
+    font-weight: 500;
+    flex: 1;
+}
+
+.boardEditBtn {
+    color: rgba(232, 217, 187, 0.55);
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.boardDeleteBtn {
+    color: #ff5555;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.boardCardDesc {
+    font-size: 11px;
+    color: rgba(232, 217, 187, 0.55);
+    margin-bottom: 8px;
+}
+
+.boardCardBottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.boardCardDue {
+    font-size: 10.5px;
+    color: rgba(232, 217, 187, 0.55);
+}
+
+.modalForm {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.modalLabel {
+    font-size: 11px;
+    color: rgba(232, 217, 187, 0.55);
+    display: block;
+    margin-bottom: 5px;
+}
+
+.modalRow {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.modalButtons {
+    display: flex;
+    gap: 10px;
+    margin-top: 4px;
+}

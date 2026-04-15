@@ -1,0 +1,66 @@
+:root {
+    --bg-deep: #0e1a20;
+    --bg-panel: #1c2b35;
+    --bg-card: #243340;
+    --bg-card-hover: #2a3c4a;
+    --accent: #fe5516;
+    --accent-dim: rgba(254, 85, 22, 0.14);
+    --accent-glow: rgba(254, 85, 22, 0.38);
+    --cream: #e8d9bb;
+    --cream-dim: rgba(232, 217, 187, 0.55);
+    --cream-mut: rgba(232, 217, 187, 0.25);
+    --green: #00c878;
+    --green-dim: rgba(0, 200, 120, 0.14);
+    --border: rgba(232, 217, 187, 0.07);
+    --border-md: rgba(232, 217, 187, 0.13);
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(14px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(-8px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+}
+
+.fade-up {
+    animation: fadeUp 0.35s ease forwards;
+}

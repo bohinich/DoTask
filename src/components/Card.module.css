@@ -1,0 +1,6 @@
+.card {
+    border-radius: 14px;
+    padding: 18px 20px;
+    border: 1px solid;
+    transition: all 0.2s ease;
+}

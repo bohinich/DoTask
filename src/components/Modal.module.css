@@ -1,0 +1,55 @@
+.overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    background: rgba(10, 18, 22, 0.75);
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal {
+    background: #1c2b35;
+    border-radius: 16px;
+    padding: 24px 28px;
+    border: 1px solid rgba(232, 217, 187, 0.13);
+    width: 100%;
+    max-width: 460px;
+    animation: fadeUp 0.25s ease;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5);
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 18px;
+}
+
+.title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 20px;
+    letter-spacing: 0.5px;
+    color: #e8d9bb;
+}
+
+.closeBtn {
+    color: rgba(232, 217, 187, 0.55);
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(14px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

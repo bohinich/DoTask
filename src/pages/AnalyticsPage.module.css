@@ -1,0 +1,232 @@
+.analyticsPage {
+    flex: 1;
+    overflow-y: auto;
+    padding: 22px 26px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.pageTitle {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 26px;
+    letter-spacing: 1px;
+}
+
+.kpiGrid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+}
+
+.kpiCard {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.kpiLabel {
+    font-size: 11px;
+    color: rgba(232, 217, 187, 0.55);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+}
+
+.kpiValue {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 34px;
+    letter-spacing: 1px;
+}
+
+.kpiTrend {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-top: 6px;
+    font-size: 11px;
+    color: #00c878;
+}
+
+.chartsGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 14px;
+}
+
+.chartTitle {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 18px;
+    letter-spacing: 1px;
+    margin-bottom: 16px;
+}
+
+.donutContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+}
+
+.donutChart {
+    position: relative;
+    width: 120px;
+    height: 120px;
+}
+
+.donutLabel {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.donutPercent {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    letter-spacing: 1px;
+    color: #fe5516;
+}
+
+.donutText {
+    font-size: 10px;
+    color: rgba(232, 217, 187, 0.55);
+}
+
+.donutStats {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.donutStat {
+    text-align: center;
+}
+
+.donutStatValue {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 20px;
+}
+
+.donutStatLabel {
+    font-size: 11px;
+    color: rgba(232, 217, 187, 0.55);
+}
+
+.projectList {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.projectRow {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    margin-bottom: 4px;
+}
+
+.projectName {
+    color: rgba(232, 217, 187, 0.55);
+}
+
+.projectCount {
+    color: #e8d9bb;
+    font-weight: 600;
+}
+
+.projectBar {
+    height: 6px;
+    border-radius: 3px;
+    background: rgba(232, 217, 187, 0.08);
+}
+
+.projectFill {
+    height: 100%;
+    border-radius: 3px;
+    transition: width 0.6s ease;
+}
+
+.priorityList {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.priorityRow {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.priorityDot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+}
+
+.priorityName {
+    font-size: 12px;
+    color: rgba(232, 217, 187, 0.55);
+    flex: 1;
+    text-transform: capitalize;
+}
+
+.priorityBar {
+    flex: 2;
+    height: 6px;
+    border-radius: 3px;
+    background: rgba(232, 217, 187, 0.08);
+}
+
+.priorityFill {
+    height: 100%;
+    border-radius: 3px;
+    transition: width 0.6s ease;
+}
+
+.priorityCount {
+    font-size: 12px;
+    font-weight: 600;
+    min-width: 20px;
+    text-align: right;
+}
+
+.activityList {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.activityRow {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 0;
+}
+
+.activityIcon {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    background: rgba(254, 85, 22, 0.14);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.activityContent {
+    flex: 1;
+}
+
+.activityName {
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.activityMeta {
+    font-size: 11px;
+    color: rgba(232, 217, 187, 0.55);
+}

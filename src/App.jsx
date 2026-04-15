@@ -1,38 +1,36 @@
-import { useState } from "react";
-import { T } from "./tokens/theme";
-import { injectGlobal } from "./tokens/globalStyles";
-import { INIT_TASKS, INIT_EVENTS } from "./data/initialData";
-import { Sidebar } from "./components/Sidebar/Sidebar";
-import { Topbar } from "./components/Topbar/Topbar";
-import { Dashboard } from "./pages/Dashboard";
-import { TasksPage } from "./pages/Tasks";
-import { AIPage } from "./pages/AIAssistant";
-import { CalendarPage } from "./pages/Calendar";
-import { AnalyticsPage } from "./pages/Analytics";
-import { SettingsPage } from "./pages/Settings";
+import { useState } from 'react'
+import Sidebar from './components/Sidebar'
+import Topbar from './components/Topbar'
+import Dashboard from './pages/Dashboard'
+import TasksPage from './pages/TasksPage'
+import AIPage from './pages/AIPage'
+import CalendarPage from './pages/CalendarPage'
+import AnalyticsPage from './pages/AnalyticsPage'
+import SettingsPage from './pages/SettingsPage'
+import { INIT_TASKS, INIT_EVENTS } from './data/initialData'
+import styles from './App.module.css'
 
 export default function App() {
-  injectGlobal();
-  const [page, setPage]     = useState("dashboard");
-  const [tasks, setTasks]   = useState(INIT_TASKS);
-  const [events, setEvents] = useState(INIT_EVENTS);
+  const [page, setPage] = useState("dashboard")
+  const [tasks, setTasks] = useState(INIT_TASKS)
+  const [events, setEvents] = useState(INIT_EVENTS)
 
   const pages = {
-    dashboard: <Dashboard     tasks={tasks} setPage={setPage} />,
-    tasks:     <Tasks     tasks={tasks} setTasks={setTasks} />,
-    ai:        <AIAssistant        tasks={tasks} />,
-    calendar:  <Calendar  events={events} setEvents={setEvents} />,
-    analytics: <Analytics tasks={tasks} />,
-    settings:  <Settings />,
-  };
+    dashboard: <Dashboard tasks={tasks} setPage={setPage} />,
+    tasks: <TasksPage tasks={tasks} setTasks={setTasks} />,
+    ai: <AIPage tasks={tasks} />,
+    calendar: <CalendarPage events={events} setEvents={setEvents} />,
+    analytics: <AnalyticsPage tasks={tasks} />,
+    settings: <SettingsPage />,
+  }
 
   return (
-    <div style={{ display: "flex", height: "100vh", width: "100vw", overflow: "hidden", background: T.bgDeep }}>
+    <div className={styles.app}>
       <Sidebar page={page} setPage={setPage} />
-      <div style={{ flex: 1, display: "flex", flexDirection: "column", overflow: "hidden" }}>
+      <div className={styles.main}>
         <Topbar page={page} tasks={tasks} />
         {pages[page]}
       </div>
     </div>
-  );
+  )
 }
