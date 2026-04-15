@@ -1,5 +1,5 @@
-import { LayoutDashboard, CheckSquare, Bot, CalendarDays, BarChart2, Settings, Layers, Users, ChevronRight } from 'lucide-react'
 import { useState } from 'react'
+import { LayoutDashboard, CheckSquare, Bot, CalendarDays, BarChart2, Settings, Layers, Users, ChevronRight, Menu, X } from 'lucide-react'
 import styles from './Sidebar.module.css'
 
 const NAV_ITEMS = [
@@ -31,32 +31,54 @@ function NavItem({ active, Icon, label, onClick, chevron }) {
 }
 
 export default function Sidebar({ page, setPage }) {
-  return (
-    <aside className={styles.sidebar}>
-      <div className={styles.accentLine} />
-      
-      <div className={styles.logoSection}>
-        <div className={styles.logoIcon}>
-          <Layers size={18} color="#fff" />
-        </div>
-        <span className={styles.logoText}>Task Manager</span>
-      </div>
+  const [isOpen, setIsOpen] = useState(false)
 
-      <div className={styles.navSection}>
-        <span className={styles.sectionTitle}>MAIN</span>
-        {NAV_ITEMS.map(item => (
-          <NavItem
-            key={item.id}
-            active={page === item.id}
-            Icon={item.Icon}
-            label={item.label}
-            onClick={() => setPage(item.id)}
-          />
-        ))}
+  const handleNavClick = (id) => {
+    setPage(id)
+    setIsOpen(false)
+  }
+
+  return (
+    <>
+      {/* Mobile menu button */}
+      <button 
+        className={styles.menuBtn}
+        onClick={() => setIsOpen(!isOpen)}
+      >
+        {isOpen ? <X size={24} /> : <Menu size={24} />}
+      </button>
+      
+      {/* Overlay */}
+      {isOpen && (
+        <div className={styles.overlay} onClick={() => setIsOpen(false)} />
+      )}
+      
+      <aside className={`${styles.sidebar} ${isOpen ? styles.open : ''}`}>
+        <div className={styles.accentLine} />
         
-        <span className={`${styles.sectionTitle} ${styles.teamsTitle}`}>TEAMS</span>
-        <NavItem Icon={Users} label="Product" onClick={() => {}} chevron />
-      </div>
-    </aside>
+        <div className={styles.logoSection}>
+          <div className={styles.logoIcon}>
+            <Layers size={18} color="#fff" />
+          </div>
+          <span className={styles.logoText}>Task Manager</span>
+        </div>
+
+        <div className={styles.navSection}>
+          <span className={styles.sectionTitle}>MAIN</span>
+          {NAV_ITEMS.map(item => (
+            <NavItem
+              key={item.id}
+              active={page === item.id}
+              Icon={item.Icon}
+              label={item.label}
+              onClick={() => handleNavClick(item.id)}
+            />
+          ))}
+          
+          <span className={`${styles.sectionTitle} ${styles.teamsTitle}`}>TEAMS</span>
+          <NavItem Icon={Users} label="Product" onClick={() => {}} chevron />
+        </div>
+      </aside>
+    </>
   )
 }

@@ -11,3 +11,10 @@
     flex-direction: column;
     overflow: hidden;
 }
+
+/* Mobile */
+@media (max-width: 768px) {
+    .app {
+        flex-direction: column;
+    }
+}

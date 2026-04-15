@@ -284,3 +284,87 @@
     text-align: center;
     line-height: 1.2;
 }
+
+/* Mobile */
+@media (max-width: 768px) {
+    .dashboard {
+        padding: 16px;
+        gap: 12px;
+    }
+
+    .statsGrid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+
+    .mainGrid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .bottomGrid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .statNumber {
+        font-size: 24px;
+    }
+
+    .statIcon {
+        width: 28px;
+        height: 28px;
+    }
+
+    .statIcon svg {
+        width: 14px;
+        height: 14px;
+    }
+}
+
+/* Tablet */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .dashboard {
+        padding: 18px;
+    }
+
+    .mainGrid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .mainGrid> :last-child {
+        grid-column: span 2;
+    }
+
+    .statsGrid {
+        gap: 10px;
+    }
+
+    .statNumber {
+        font-size: 28px;
+    }
+}
+
+/* Calendar mobile */
+@media (max-width: 480px) {
+    .calendarDay {
+        font-size: 10px;
+    }
+
+    .calendarWeekday {
+        font-size: 8px;
+    }
+
+    .widgetContent {
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .chartContainer {
+        align-self: center;
+    }
+
+    .statsList {
+        width: 100%;
+    }
+}

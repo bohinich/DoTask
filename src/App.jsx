@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Sidebar from './components/Sidebar'
 import Topbar from './components/Topbar'
 import Dashboard from './pages/Dashboard'
@@ -14,6 +14,16 @@ export default function App() {
   const [page, setPage] = useState("dashboard")
   const [tasks, setTasks] = useState(INIT_TASKS)
   const [events, setEvents] = useState(INIT_EVENTS)
+  const [isMobile, setIsMobile] = useState(false)
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768)
+    }
+    checkMobile()
+    window.addEventListener('resize', checkMobile)
+    return () => window.removeEventListener('resize', checkMobile)
+  }, [])
 
   const pages = {
     dashboard: <Dashboard tasks={tasks} setPage={setPage} />,
@@ -28,7 +38,7 @@ export default function App() {
     <div className={styles.app}>
       <Sidebar page={page} setPage={setPage} />
       <div className={styles.main}>
-        <Topbar page={page} tasks={tasks} />
+        {!isMobile && <Topbar page={page} tasks={tasks} />}
         {pages[page]}
       </div>
     </div>

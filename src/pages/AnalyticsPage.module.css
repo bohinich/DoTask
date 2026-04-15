@@ -230,3 +230,68 @@
     font-size: 11px;
     color: rgba(232, 217, 187, 0.55);
 }
+
+/* Mobile */
+@media (max-width: 768px) {
+    .analyticsPage {
+        padding: 16px;
+        gap: 12px;
+    }
+
+    .pageTitle {
+        font-size: 22px;
+    }
+
+    .kpiGrid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+
+    .chartsGrid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .kpiValue {
+        font-size: 26px;
+    }
+
+    .donutContainer {
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .donutStats {
+        flex-direction: row;
+        justify-content: center;
+        gap: 20px;
+    }
+
+    .activityRow {
+        flex-wrap: wrap;
+    }
+
+    .activityContent {
+        flex: 1;
+        min-width: 120px;
+    }
+}
+
+/* Tablet */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .analyticsPage {
+        padding: 18px;
+    }
+
+    .chartsGrid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .chartsGrid> :last-child {
+        grid-column: span 2;
+    }
+
+    .kpiValue {
+        font-size: 30px;
+    }
+}

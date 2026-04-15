@@ -206,3 +206,77 @@
     gap: 10px;
     margin-top: 4px;
 }
+
+/* Mobile */
+@media (max-width: 768px) {
+    .tasksPage {
+        padding: 16px;
+    }
+
+    .toolbar {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+    }
+
+    .filterGroup {
+        order: 1;
+        justify-content: center;
+    }
+
+    .rightToolbar {
+        margin-left: 0;
+        justify-content: space-between;
+    }
+
+    .pageTitle {
+        font-size: 22px;
+        text-align: center;
+    }
+
+    .boardView {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .listItem {
+        flex-wrap: wrap;
+    }
+
+    .listItemActions {
+        width: 100%;
+        justify-content: flex-end;
+        margin-top: 8px;
+    }
+
+    .listItemDue {
+        min-width: auto;
+    }
+}
+
+/* Tablet */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .tasksPage {
+        padding: 18px;
+    }
+
+    .boardView {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .boardView> :last-child {
+        grid-column: span 2;
+    }
+}
+
+/* Modal mobile */
+@media (max-width: 560px) {
+    .modalForm {
+        gap: 10px;
+    }
+
+    .modalRow {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+}
