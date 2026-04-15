@@ -2,7 +2,7 @@
   "name": "taskmanager",
   "version": "1.0.0",
   "type": "module",
-  "homepage": "https://ваш-username.github.io/назва-репозиторію",
+  "homepage": "https://bohinich.github.io/DoTask",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
