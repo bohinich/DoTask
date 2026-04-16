@@ -60,7 +60,7 @@ export default function Sidebar({ page, setPage }) {
           <div className={styles.logoIcon}>
             <Layers size={18} color="#fff" />
           </div>
-          <span className={styles.logoText}>Task Manager</span>
+          <span className={styles.logoText}>DoTask</span>
         </div>
 
         <div className={styles.navSection}>
