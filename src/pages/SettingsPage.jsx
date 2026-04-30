@@ -42,9 +42,7 @@ export default function SettingsPage() {
   const [accent, setAccent] = useState("#fe5516")
 
   const teamMembers = [
-    { name: "Anna Kovalenko", role: "Admin", init: "AK" },
-    { name: "Max Ryabov", role: "Developer", init: "MR" },
-    { name: "Julia Savchenko", role: "Designer", init: "JS" },
+    { name: "User", role: "Admin", init: "U" },
   ]
 
   return (
@@ -54,20 +52,20 @@ export default function SettingsPage() {
       <div className={styles.settingsGrid}>
         <Section title="Profile">
           <div className={styles.profileHeader}>
-            <Avatar initial="AK" size={56} glow />
+            <Avatar initial="U" size={56} glow />
             <div>
-              <div className={styles.profileName}>Anna Kovalenko</div>
-              <div className={styles.profileEmail}>anna@company.com</div>
+              <div className={styles.profileName}>User</div>
+              <div className={styles.profileEmail}>user@example.com</div>
             </div>
           </div>
           <div className={styles.profileForm}>
             <div>
               <label className={styles.formLabel}>Full Name</label>
-              <Input value="Anna Kovalenko" onChange={() => {}} placeholder="Your name" />
+              <Input value="User" onChange={() => {}} placeholder="Your name" />
             </div>
             <div>
               <label className={styles.formLabel}>Email</label>
-              <Input value="anna@company.com" onChange={() => {}} placeholder="Email" />
+              <Input value="user@example.com" onChange={() => {}} placeholder="Email" />
             </div>
             <Btn variant="primary" icon={<Save size={14} />} style={{ marginTop: 4 }}>Save Changes</Btn>
           </div>
@@ -84,11 +82,11 @@ export default function SettingsPage() {
             <input type="color" value={accent} onChange={e => setAccent(e.target.value)} className={styles.colorPicker} />
           </Row>
           <Row label="Language" desc="Interface language">
-            <Select value="uk" onChange={() => {}} style={{ width: 120 }} options={[{ value: "uk", label: "Українська" }, { value: "en", label: "English" }]} />
+            <Select value="en" onChange={() => {}} style={{ width: 120 }} options={[{ value: "en", label: "English" }]} />
           </Row>
         </Section>
 
-        <Section title="Team Members">
+        <Section title="Team">
           {teamMembers.map(({ name, role, init }) => (
             <div key={init} className={styles.teamRow}>
               <Avatar initial={init} size={36} />

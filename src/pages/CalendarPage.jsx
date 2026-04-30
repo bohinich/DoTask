@@ -6,9 +6,8 @@ import Input from '../components/Input'
 import styles from './CalendarPage.module.css'
 
 export default function CalendarPage({ events, setEvents }) {
-  const [month, setMonth] = useState(new Date(2024, 3, 1))
+  const [month, setMonth] = useState(new Date())
   const [selected, setSelected] = useState(null)
-  const [modal, setModal] = useState(false)
   const [form, setForm] = useState({ title: "", time: "09:00", color: "#fe5516" })
 
   const start = new Date(month.getFullYear(), month.getMonth(), 1).getDay()
@@ -22,23 +21,37 @@ export default function CalendarPage({ events, setEvents }) {
     return { day: d, cur: true }
   })
 
-  const monthStr = month.toLocaleString("default", { month: "long", year: "numeric" })
+  const monthStr = month.toLocaleString("en-US", { month: "long", year: "numeric" })
   const weekdays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
 
   const eventsOn = (day) => {
-    const key = `2024-04-${String(day).padStart(2, "0")}`
+    const year = month.getFullYear()
+    const monthNum = String(month.getMonth() + 1).padStart(2, "0")
+    const dayStr = String(day).padStart(2, "0")
+    const key = `${year}-${monthNum}-${dayStr}`
     return events.filter(e => e.date === key)
   }
 
   const addEvent = () => {
     if (!form.title.trim() || !selected) return
-    const key = `2024-04-${String(selected).padStart(2, "0")}`
+    const year = month.getFullYear()
+    const monthNum = String(month.getMonth() + 1).padStart(2, "0")
+    const dayStr = String(selected).padStart(2, "0")
+    const key = `${year}-${monthNum}-${dayStr}`
     setEvents(prev => [...prev, { id: Date.now(), date: key, title: form.title, time: form.time, color: form.color }])
-    setModal(false)
     setForm({ title: "", time: "09:00", color: "#fe5516" })
+    setSelected(null)
   }
 
   const delEvent = id => setEvents(prev => prev.filter(e => e.id !== id))
+
+  const today = new Date()
+  const isToday = (day, cur) => {
+    return cur && 
+      day === today.getDate() && 
+      month.getMonth() === today.getMonth() && 
+      month.getFullYear() === today.getFullYear()
+  }
 
   return (
     <div className={styles.calendarPage}>
@@ -63,18 +76,18 @@ export default function CalendarPage({ events, setEvents }) {
           {cells.map(({ day, cur }, i) => {
             const evs = cur ? eventsOn(day) : []
             const isSel = selected === day && cur
-            const isToday = cur && day === 15
+            const isTodayDate = isToday(day, cur)
             return (
               <div
                 key={i}
-                className={`${styles.calendarCell} ${cur ? styles.cur : styles.prevNext} ${isSel ? styles.selected : ''} ${isToday ? styles.today : ''}`}
+                className={`${styles.calendarCell} ${cur ? styles.cur : styles.prevNext} ${isSel ? styles.selected : ''} ${isTodayDate ? styles.today : ''}`}
                 onClick={() => cur && setSelected(day)}
               >
-                <div className={`${styles.dayNumber} ${isToday ? styles.todayNumber : ''}`}>
+                <div className={`${styles.dayNumber} ${isTodayDate ? styles.todayNumber : ''}`}>
                   {day}
                 </div>
                 {evs.map(e => (
-                  <div key={e.id} className={styles.event} style={{ background: `${e.color}22`, borderColor: `${e.color}55`, borderLeftColor: e.color }}>
+                  <div key={e.id} className={styles.event} style={{ background: `${e.color}22`, border: `1px solid ${e.color}55`, borderLeft: `3px solid ${e.color}` }}>
                     <span className={styles.eventTitle}>{e.title}</span>
                     <button className={styles.eventDelete} onClick={ev => { ev.stopPropagation(); delEvent(e.id) }}>
                       <X size={8} />
@@ -90,7 +103,9 @@ export default function CalendarPage({ events, setEvents }) {
       {selected && (
         <Card delay={0} style={{ padding: "16px 20px", marginTop: 14 }}>
           <div className={styles.addEventSection}>
-            <span className={styles.addEventLabel}>Add event on April {selected}</span>
+            <span className={styles.addEventLabel}>
+              Add event on {month.toLocaleString("en-US", { month: "long" })} {selected}, {month.getFullYear()}
+            </span>
             <Input value={form.title} onChange={e => setForm(f => ({ ...f, title: e.target.value }))} placeholder="Event title" style={{ width: 200 }} />
             <Input value={form.time} onChange={e => setForm(f => ({ ...f, time: e.target.value }))} placeholder="Time" style={{ width: 100 }} />
             <input type="color" value={form.color} onChange={e => setForm(f => ({ ...f, color: e.target.value }))} className={styles.colorPicker} />

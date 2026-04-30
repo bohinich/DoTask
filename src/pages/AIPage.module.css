@@ -128,6 +128,10 @@
     border-radius: 14px 14px 14px 4px;
 }
 
+.messageText {
+    white-space: pre-line;
+}
+
 .loadingBubble {
     padding: 13px 16px;
     border-radius: 14px 14px 14px 4px;
@@ -212,4 +216,23 @@
 .input:focus {
     border-color: #fe5516;
     box-shadow: 0 0 0 3px rgba(254, 85, 22, 0.14);
+}
+
+@media (max-width: 768px) {
+    .aiPage {
+        padding: 16px;
+    }
+
+    .messageBubble {
+        max-width: 85%;
+    }
+
+    .suggestions {
+        gap: 6px;
+    }
+
+    .suggestionBtn {
+        padding: 5px 10px;
+        font-size: 11px;
+    }
 }

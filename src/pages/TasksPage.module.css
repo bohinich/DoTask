@@ -62,6 +62,7 @@
     display: flex;
     align-items: center;
     gap: 12px;
+    flex-wrap: wrap;
 }
 
 .listItemContent {
@@ -83,19 +84,13 @@
     display: flex;
     align-items: center;
     gap: 10px;
+    flex-wrap: wrap;
 }
 
 .listItemDue {
     font-size: 11px;
     color: rgba(232, 217, 187, 0.55);
     min-width: 70px;
-}
-
-.emptyState {
-    text-align: center;
-    padding: 40px 0;
-    color: rgba(232, 217, 187, 0.55);
-    font-size: 13px;
 }
 
 .boardView {
@@ -108,106 +103,217 @@
 .boardColumn {
     display: flex;
     flex-direction: column;
+    min-height: 300px;
+    background: rgba(28, 43, 53, 0.3);
+    border-radius: 16px;
+    padding: 12px;
 }
 
 .boardHeader {
     display: flex;
     align-items: center;
-    gap: 8px;
-    margin-bottom: 12px;
+    justify-content: space-between;
+    margin-bottom: 16px;
+    padding: 0 4px;
 }
 
 .boardTitle {
-    font-size: 12px;
+    font-size: 13px;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1px;
+    color: rgba(232, 217, 187, 0.7);
 }
 
 .boardCount {
     background: rgba(254, 85, 22, 0.14);
     color: #fe5516;
-    padding: 2px 7px;
-    border-radius: 10px;
+    padding: 2px 8px;
+    border-radius: 12px;
     font-size: 11px;
+    font-weight: 600;
 }
 
 .boardCards {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 10px;
+    min-height: 150px;
+    max-height: calc(100vh - 250px);
+    overflow-y: auto;
+    padding-right: 4px;
+}
+
+.boardCards::-webkit-scrollbar {
+    width: 3px;
+}
+
+.boardCards::-webkit-scrollbar-track {
+    background: rgba(232, 217, 187, 0.05);
+    border-radius: 3px;
+}
+
+.boardCards::-webkit-scrollbar-thumb {
+    background: rgba(232, 217, 187, 0.2);
+    border-radius: 3px;
+}
+
+.dropZone {
+    min-height: 40px;
+    border-radius: 12px;
+    transition: all 0.2s ease;
+    margin-top: 8px;
+}
+
+.dropZoneOver {
+    background: transparent;
+    border: none;
+}
+
+.dragHandle {
+    display: none;
 }
 
 .boardCardTop {
     display: flex;
     align-items: center;
-    gap: 6px;
-    margin-bottom: 5px;
+    gap: 8px;
+    margin-bottom: 8px;
 }
 
 .boardCardName {
     font-size: 13px;
     font-weight: 500;
     flex: 1;
+    color: #e8d9bb;
+}
+
+.boardCardActions {
+    display: flex;
+    align-items: center;
+    gap: 4px;
 }
 
 .boardEditBtn {
-    color: rgba(232, 217, 187, 0.55);
     background: none;
     border: none;
     cursor: pointer;
+    color: rgba(232, 217, 187, 0.4);
+    padding: 4px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+}
+
+.boardEditBtn:hover {
+    color: #fe5516;
+    background: rgba(254, 85, 22, 0.1);
 }
 
 .boardDeleteBtn {
-    color: #ff5555;
     background: none;
     border: none;
     cursor: pointer;
+    color: rgba(232, 217, 187, 0.4);
+    padding: 4px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+}
+
+.boardDeleteBtn:hover {
+    color: #ff5555;
+    background: rgba(255, 85, 85, 0.1);
 }
 
 .boardCardDesc {
     font-size: 11px;
     color: rgba(232, 217, 187, 0.55);
-    margin-bottom: 8px;
+    margin-bottom: 10px;
+    line-height: 1.4;
 }
 
 .boardCardBottom {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-start;
+    margin-top: 4px;
 }
 
 .boardCardDue {
-    font-size: 10.5px;
-    color: rgba(232, 217, 187, 0.55);
+    font-size: 10px;
+    color: rgba(232, 217, 187, 0.4);
+    display: flex;
+    align-items: center;
+    gap: 4px;
 }
 
 .modalForm {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 14px;
 }
 
 .modalLabel {
     font-size: 11px;
-    color: rgba(232, 217, 187, 0.55);
+    font-weight: 600;
+    color: rgba(232, 217, 187, 0.6);
     display: block;
-    margin-bottom: 5px;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
 .modalRow {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 12px;
+    gap: 14px;
 }
 
 .modalButtons {
     display: flex;
-    gap: 10px;
-    margin-top: 4px;
+    gap: 12px;
+    margin-top: 8px;
 }
 
-/* Mobile */
+.emptyState {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 20px;
+    text-align: center;
+}
+
+.emptyIcon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 20px;
+    background: rgba(254, 85, 22, 0.1);
+    border-radius: 50%;
+    color: #fe5516;
+}
+
+.emptyTitle {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #e8d9bb;
+}
+
+.emptyText {
+    font-size: 14px;
+    color: rgba(232, 217, 187, 0.55);
+    margin-bottom: 24px;
+}
+
 @media (max-width: 768px) {
     .tasksPage {
         padding: 16px;
@@ -239,8 +345,13 @@
         gap: 16px;
     }
 
+    .boardColumn {
+        min-height: auto;
+    }
+
     .listItem {
-        flex-wrap: wrap;
+        flex-direction: column;
+        align-items: flex-start;
     }
 
     .listItemActions {
@@ -254,7 +365,6 @@
     }
 }
 
-/* Tablet */
 @media (min-width: 769px) and (max-width: 1024px) {
     .tasksPage {
         padding: 18px;
@@ -262,21 +372,17 @@
 
     .boardView {
         grid-template-columns: repeat(2, 1fr);
-    }
-
-    .boardView> :last-child {
-        grid-column: span 2;
+        gap: 14px;
     }
 }
 
-/* Modal mobile */
 @media (max-width: 560px) {
     .modalForm {
-        gap: 10px;
+        gap: 12px;
     }
 
     .modalRow {
         grid-template-columns: 1fr;
-        gap: 10px;
+        gap: 12px;
     }
 }

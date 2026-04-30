@@ -40,7 +40,6 @@ export default function Sidebar({ page, setPage }) {
 
   return (
     <>
-      {/* Mobile menu button */}
       <button 
         className={styles.menuBtn}
         onClick={() => setIsOpen(!isOpen)}
@@ -48,7 +47,6 @@ export default function Sidebar({ page, setPage }) {
         {isOpen ? <X size={24} /> : <Menu size={24} />}
       </button>
       
-      {/* Overlay */}
       {isOpen && (
         <div className={styles.overlay} onClick={() => setIsOpen(false)} />
       )}
@@ -56,7 +54,7 @@ export default function Sidebar({ page, setPage }) {
       <aside className={`${styles.sidebar} ${isOpen ? styles.open : ''}`}>
         <div className={styles.accentLine} />
         
-        <div className={styles.logoSection}>
+        <div className={styles.logoSection} onClick={() => handleNavClick("dashboard")} style={{ cursor: "pointer" }}>
           <div className={styles.logoIcon}>
             <Layers size={18} color="#fff" />
           </div>

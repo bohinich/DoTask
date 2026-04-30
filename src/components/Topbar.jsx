@@ -1,33 +1,49 @@
-import { Search, Bell, Zap } from 'lucide-react'
-import { useState } from 'react'
-import IconBtn from './IconBtn'
+import { Search, X } from 'lucide-react'
+import { useState, useRef } from 'react'
 import Avatar from './Avatar'
 import styles from './Topbar.module.css'
 
-export default function Topbar({ tasks }) {
+export default function Topbar({ onSearch }) {
   const [search, setSearch] = useState("")
-  const pending = tasks.filter(t => t.status !== "done").length
+  const inputRef = useRef(null)
+
+  const handleSearch = (value) => {
+    setSearch(value)
+    if (onSearch) onSearch(value)
+  }
+
+  const handleBlur = () => {
+    // Очищаємо пошук при втраті фокусу
+    setSearch("")
+    if (onSearch) onSearch("")
+  }
+
+  const clearSearch = () => {
+    setSearch("")
+    if (onSearch) onSearch("")
+    inputRef.current?.focus()
+  }
 
   return (
     <header className={styles.topbar}>
       <div className={styles.searchContainer}>
         <Search size={14} className={styles.searchIcon} />
         <input
+          ref={inputRef}
           value={search}
-          onChange={e => setSearch(e.target.value)}
-          placeholder="Search tasks..."
+          onChange={e => handleSearch(e.target.value)}
+          onBlur={handleBlur}
+          placeholder="Search..."
           className={styles.searchInput}
         />
+        {search && (
+          <button className={styles.clearBtn} onClick={clearSearch}>
+            <X size={12} />
+          </button>
+        )}
       </div>
       <div className={styles.rightSection}>
-        <div className={styles.notificationWrapper}>
-          <IconBtn icon={Bell} tooltip="Notifications" />
-          {pending > 0 && (
-            <span className={styles.badge}>{pending}</span>
-          )}
-        </div>
-        <IconBtn icon={Zap} tooltip="Quick actions" />
-        <Avatar initial="AK" size={34} glow />
+        <Avatar initial="U" size={34} />
       </div>
     </header>
   )

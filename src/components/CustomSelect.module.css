@@ -1,0 +1,59 @@
+.customSelect {
+    position: relative;
+}
+
+.selectButton {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    background: #0e1a20;
+    border: 1px solid rgba(232, 217, 187, 0.13);
+    border-radius: 9px;
+    padding: 9px 13px;
+    color: #e8d9bb;
+    font-size: 13px;
+    cursor: pointer;
+    min-width: 120px;
+}
+
+.selectButton:hover {
+    border-color: rgba(254, 85, 22, 0.5);
+}
+
+.chevron {
+    transition: transform 0.2s;
+}
+
+.chevron.open {
+    transform: rotate(180deg);
+}
+
+.dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    margin-top: 4px;
+    background: #1c2b35;
+    border: 1px solid rgba(232, 217, 187, 0.13);
+    border-radius: 9px;
+    min-width: 100%;
+    z-index: 100;
+    overflow: hidden;
+}
+
+.option {
+    padding: 8px 13px;
+    font-size: 13px;
+    cursor: pointer;
+    transition: background 0.15s;
+}
+
+.option:hover {
+    background: rgba(254, 85, 22, 0.14);
+}
+
+.option.selected {
+    color: #fe5516;
+    background: rgba(254, 85, 22, 0.08);
+}

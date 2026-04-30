@@ -11,7 +11,7 @@ export default function AnalyticsPage({ tasks }) {
   const progress = tasks.filter(t => t.status === "progress").length
   const done = tasks.filter(t => t.status === "done").length
   const total = tasks.length
-  const pct = Math.round((done / total) * 100)
+  const pct = total === 0 ? 0 : Math.round((done / total) * 100)
 
   const byProject = {}
   tasks.forEach(t => { byProject[t.project] = (byProject[t.project] || 0) + 1 })
@@ -59,7 +59,7 @@ export default function AnalyticsPage({ tasks }) {
             <div className={styles.donutChart}>
               <svg width="120" height="120" style={{ transform: "rotate(-90deg)" }}>
                 <circle cx="60" cy="60" r={r} fill="none" stroke="rgba(232,217,187,0.08)" strokeWidth="10" />
-                <circle cx="60" cy="60" r={r} fill="none" stroke="#fe5516" strokeWidth="10"
+                <circle cx="60" cy="60" r={r} fill="none" stroke="#fe5516" strokeWidth="10" 
                   strokeLinecap="round" strokeDasharray={circ} strokeDashoffset={offset}
                   style={{ filter: "drop-shadow(0 0 8px rgba(254,85,22,0.38))", transition: "stroke-dashoffset 0.6s ease" }} />
               </svg>
@@ -123,10 +123,10 @@ export default function AnalyticsPage({ tasks }) {
               </div>
               <div className={styles.activityContent}>
                 <div className={styles.activityName}>{t.name}</div>
-                <div className={styles.activityMeta}>{t.project} · {t.due}</div>
+                <div className={styles.activityMeta}>{t.project || "No project"} · {t.due || "No deadline"}</div>
               </div>
               <Badge status={t.status} />
-              <Avatar initial={t.assignee} size={26} />
+              <Avatar initial="U" size={26} />
             </div>
           ))}
         </div>

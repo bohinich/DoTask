@@ -12,9 +12,26 @@ import styles from './App.module.css'
 
 export default function App() {
   const [page, setPage] = useState("dashboard")
-  const [tasks, setTasks] = useState(INIT_TASKS)
-  const [events, setEvents] = useState(INIT_EVENTS)
+  const [searchQuery, setSearchQuery] = useState("")
   const [isMobile, setIsMobile] = useState(false)
+
+  const [tasks, setTasks] = useState(() => {
+    const saved = localStorage.getItem('dotask_tasks')
+    return saved ? JSON.parse(saved) : INIT_TASKS
+  })
+
+  const [events, setEvents] = useState(() => {
+    const saved = localStorage.getItem('dotask_events')
+    return saved ? JSON.parse(saved) : INIT_EVENTS
+  })
+
+  useEffect(() => {
+    localStorage.setItem('dotask_tasks', JSON.stringify(tasks))
+  }, [tasks])
+
+  useEffect(() => {
+    localStorage.setItem('dotask_events', JSON.stringify(events))
+  }, [events])
 
   useEffect(() => {
     const checkMobile = () => {
@@ -26,8 +43,8 @@ export default function App() {
   }, [])
 
   const pages = {
-    dashboard: <Dashboard tasks={tasks} setPage={setPage} />,
-    tasks: <TasksPage tasks={tasks} setTasks={setTasks} />,
+    dashboard: <Dashboard tasks={tasks} setPage={setPage} searchQuery={searchQuery} />,
+    tasks: <TasksPage tasks={tasks} setTasks={setTasks} searchQuery={searchQuery} />,
     ai: <AIPage tasks={tasks} />,
     calendar: <CalendarPage events={events} setEvents={setEvents} />,
     analytics: <AnalyticsPage tasks={tasks} />,
@@ -38,7 +55,7 @@ export default function App() {
     <div className={styles.app}>
       <Sidebar page={page} setPage={setPage} />
       <div className={styles.main}>
-        {!isMobile && <Topbar page={page} tasks={tasks} />}
+        {!isMobile && <Topbar onSearch={setSearchQuery} />}
         {pages[page]}
       </div>
     </div>
